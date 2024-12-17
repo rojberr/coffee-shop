@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "git": "git add . && git commit -m",
+    "git": "git add  && git commit -m",
     "postgit": "git push -u origin master && git subtree push --prefix dist origin gh-pages"
   },
   "options": {
