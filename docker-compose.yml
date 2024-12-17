@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend-eshop:
+    image: backend:0.0.1-SNAPSHOT
+    build:
+      context: backend
+    environment:
+      SPRING_DATASOURCE_URL:
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: pass123
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-cloud-network
+
+  frontend-webshop:
+    image: frontend:0.0.1
+    build:
+      context: html-templates/shop-page
+    ports:
+      - "80:80"
+    networks:
+      - spring-cloud-network
+
+  db:
+    container_name: db-eshop
+    image: postgres:12.15
+    restart: always
+    environment:
+      POSTGRES_DB: eshop
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pass123
+    ports:
+      - "7432:5432"
+    networks:
+      - spring-cloud-network
+
+networks:
+    spring-cloud-network:
+        driver: bridge
