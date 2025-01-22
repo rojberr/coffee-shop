@@ -4,6 +4,7 @@
 	import { goto } from '$app/navigation';
   import { page } from "$app/stores";
 	import { redirect } from "@sveltejs/kit";
+	import type Quill from 'quill';
 	import { onDestroy, onMount } from "svelte";
   export const prerender = false;
 
@@ -28,7 +29,7 @@
   let base64ImageFileNames: { [key: string]: string } = {};
 
   let editor: string | HTMLElement;
-  let quill: any;
+  let quill: Quill;
   let isQuillLoaded = false;
       
   export let toolbarOptions = [
@@ -103,7 +104,6 @@
       
             if (response.ok) {
               const result = await response.json();
-              console.log(result);
             } else {
               console.error('Failed to remove image');
             }
@@ -187,6 +187,7 @@ async function uploadBase64Image(base64Image: string): Promise<string> {
 
   const formData = new FormData();
   formData.append("image", blob, fileName);
+  formData.append("folder", 'news');
 
   const response = await fetch("/api/upload/image", {
     method: "POST",
