@@ -1,4 +1,4 @@
-<nav class="top-0 z-10 overflow-hidden flex flex-row flex-wrap content-center shadow-lg justify-between w-full h-20 bg-neutral-900 p-4 font-normal text-lg border-neutral-600 border-b">
+<nav class="sticky top-0 z-10 overflow-hidden flex flex-row flex-wrap content-center shadow-lg justify-between w-full h-20 bg-neutral-900 p-4 font-normal text-lg border-neutral-600 border-b">
     <a href="/">
         <div class="flex">
             <div class="logo">

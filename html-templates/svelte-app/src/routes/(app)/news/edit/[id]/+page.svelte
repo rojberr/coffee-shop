@@ -31,6 +31,14 @@
   let editor: string | HTMLElement;
   let quill: Quill;
   let isQuillLoaded = false;
+
+  $: isAdmin = $page.data.isAdmin;
+    
+    onMount(() => {
+        if (!isAdmin) {
+            goto('/'); 
+        }
+    });
       
   export let toolbarOptions = [
       [{ header: 1 }, { header: 2 }, { header: 3 }, "blockquote", "link", "image"],
@@ -229,17 +237,36 @@ async function uploadBase64Image(base64Image: string): Promise<string> {
     quill.insertEmbed(range.index, "image", `${url}`);
   }
 }
+
+function formatDate(isoDate: string, timeZone: string = "Europe/Warsaw"): string {
+    // Tworzenie obiektu Date z daty ISO
+    const date = new Date(isoDate);
+
+    // Formatowanie daty w wybranej strefie czasowej
+    const formatter = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timeZone,
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+    });
+
+    return formatter.format(date);
+}
+
 </script>
 
 {#if isQuillLoaded}
 <div class="pt-6 break-words w-full">
     {#if news}
       <h2 class="text-6xl text-start">
-        <a class="text-bno-500" href="/">Aktualności</a> &gt; Edycja &gt; {news.name}
+        <a class="text-blue-500" href="/">Oferty</a> &gt; Edycja &gt; {news.name}
       </h2>
       <div class="flex flex-wrap flex-col justify-center relative break-words w-full ql-editor">
-          <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa aktualności...">
-          <div class="text-xl">{news.created_at} Edited: {news.last_edited}</div>
+          <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa oferty...">
+          <div class="text-xl">Stworzone: {formatDate(news.created_at)} Edytowane: {formatDate(news.last_edited)}</div>
           <div class="w-full min-h-96" bind:this={editor} />
           <button class="inline-block w-1/12 hover:cursor-pointer" on:click={editNews}>Edytuj</button>
       </div>

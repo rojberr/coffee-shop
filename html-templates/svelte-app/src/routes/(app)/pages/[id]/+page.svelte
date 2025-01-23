@@ -1,13 +1,12 @@
 <script lang="ts">
     import { page } from "$app/stores";
 	import Quill from "quill";
-	import { Delta } from "quill/core";
 	import { onMount } from "svelte";
 
     export const prerender = false;
 
-    let news = null;
-    $: news = $page.data.news?.[0] || null;
+    let pageData = null;
+    $: pageData = $page.data.pageData || null; // Usunięto `[0]`
 
     let editor: string | HTMLElement;
     let quill: Quill;
@@ -21,43 +20,43 @@
     ];
       
     onMount(async () => {
-      const { default: Quill } = await import("quill");
+        const { default: Quill } = await import("quill");
       
-      quill = new Quill(editor, {
-        modules: {
-          toolbar: {
-            container: toolbarOptions,
-          },
-        },
-        theme: "bubble",
-        placeholder: "",
-        readOnly: true,
-      });
+        quill = new Quill(editor, {
+            modules: {
+                toolbar: {
+                    container: toolbarOptions,
+                },
+            },
+            theme: "bubble",
+            placeholder: "",
+            readOnly: true,
+        });
 
-      const delta = JSON.parse(news.content);
-
-      quill.setContents(delta);
+        if (pageData && pageData.content) {
+            const delta = JSON.parse(pageData.content);
+            quill.setContents(delta);
+        }
     });
 </script>
 
 <div class="pt-6 break-words w-full">
-    {#if news}
+    {#if pageData}
       <h2 class="text-6xl text-start">
-        <a class="text-blue-500" href="/">Oferty</a> &gt; {news.name}
+        <a class="text-blue-500" href="/">Podstrony</a> &gt; {pageData.name}
       </h2>
       <div class="flex flex-wrap flex-col justify-center relative break-words w-full ql-editor">
-        {#if news.content}
-          <div class="text-xl">{news.created_at}</div>
+        {#if pageData.content}
           <div class="w-full min-h-96" bind:this={editor} />
         {:else}
-          <p>Ta aktualność nie posiada żadnego tekstu!</p>
+          <p>Ta strona nie posiada żadnego tekstu!</p>
         {/if}
       </div>
     {:else}
-      <p>Ładowanie aktualności...</p>
+      <p>Ładowanie strony...</p>
     {/if}
-  </div>
+</div>
 
-<style lang="postcss">
+<style>
     @import 'https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.bubble.css';
 </style>

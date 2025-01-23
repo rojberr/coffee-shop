@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { page } from "$app/stores";
 	import { raw } from "@auth/core";
 	import { redirect } from "@sveltejs/kit";
 	import type Quill from "quill";
@@ -11,6 +12,14 @@
     let isNewsAdded = false;
     let imagesUrl: string[];
     $: imagesUrl = [];
+
+    $: isAdmin = $page.data.isAdmin;
+    
+    onMount(() => {
+        if (!isAdmin) {
+            goto('/'); 
+        }
+    });
       
     export let toolbarOptions = [
         [{ header: 1 }, { header: 2 }, { header: 3 }, "blockquote", "link", "image"],
@@ -208,7 +217,7 @@
   </style>
   
   <div class="editor-wrapper flex flex-col items-center">
-    <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa aktualności...">
+    <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa oferty...">
     
     <div class="bg-slate-100 text-black w-11/12 ">
       <div class="w-full min-h-96" bind:this={editor} />

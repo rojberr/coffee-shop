@@ -16,10 +16,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
         let targetFolder = '';
         if (folder === 'news') {
             targetFolder = 'uploads/news';
-        } else if (folder === 'about') {
-            targetFolder = 'uploads/about';
-        } else if (folder === 'contact') {
-            targetFolder = 'uploads/contact';
+        } else if (folder === 'pages') {
+            targetFolder = 'uploads/pages';
         } else {
             return new Response(JSON.stringify({ error: 'Invalid folder specified' }), { status: 400 });
         }

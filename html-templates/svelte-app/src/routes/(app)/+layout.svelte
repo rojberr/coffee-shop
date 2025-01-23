@@ -11,7 +11,7 @@
 
 <!-- {@render children()} -->
 <main class="w-full h-auto min-h-full bg-neutral-900 shadow-xl">
-    <Navbar pages={data.pages}/>
+    <Navbar/>
     <section class="row-start-2 row-span-8 min-h-96 bg-neutral-800">
         <slot />
     </section>

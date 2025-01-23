@@ -28,11 +28,29 @@
       console.error("Error:", error);
     }
     }
+
+    function formatDate(isoDate: string, timeZone: string = "Europe/Warsaw"): string {
+    // Tworzenie obiektu Date z daty ISO
+    const date = new Date(isoDate);
+
+    // Formatowanie daty w wybranej strefie czasowej
+    const formatter = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: timeZone,
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+    });
+
+    return formatter.format(date);
+}
 </script>
 
 <div>
-    <div class="text-blue-500 text-6xl text-center uppercase m-5 flex items-center justify-center">
-      Aktualności
+    <div class="text-blue-500 text-6xl text-center uppercase p-5 flex items-center justify-center">
+      Oferty pracy
       {#if isAdmin}
         <a href="/news/add" class="flex">
           <div class="inline-flex flex-col items-center content-center mx-10 hover:scale-125 hover:text-blue-400 transition-all">
@@ -68,7 +86,7 @@
                 </div>
               {/if}
               <div class="text-xl text-center text-blue-500 font-bold mb-2">{entry.name}</div>
-              <div class="text-xs mb-4">{entry.created_at}</div>
+              <div class="text-xs mb-4">{formatDate(entry.created_at)}</div>
               <div class="line-clamp-6 text-start mb-4">{@html entry.raw_content}</div>
               <a
                 href={`news/${entry.pk_id}`}
