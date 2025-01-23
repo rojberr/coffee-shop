@@ -50,7 +50,7 @@
 
 <div>
     <div class="text-blue-500 text-6xl text-center uppercase p-5 flex items-center justify-center">
-      Oferty pracy
+      Ogłoszenia
       {#if isAdmin}
         <a href="/news/add" class="flex">
           <div class="inline-flex flex-col items-center content-center mx-10 hover:scale-125 hover:text-blue-400 transition-all">
@@ -98,7 +98,7 @@
           </div>
         {/each}
       {:else}
-        <p class="text-gray-500">Brak aktualności</p>
+        <p class="text-gray-500">Brak ogłoszeń</p>
       {/if}
     </div>
   </div>

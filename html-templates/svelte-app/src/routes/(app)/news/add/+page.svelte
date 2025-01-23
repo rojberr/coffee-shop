@@ -217,7 +217,7 @@
   </style>
   
   <div class="editor-wrapper flex flex-col items-center">
-    <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa oferty...">
+    <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa ogłoszenia...">
     
     <div class="bg-slate-100 text-black w-11/12 ">
       <div class="w-full min-h-96" bind:this={editor} />

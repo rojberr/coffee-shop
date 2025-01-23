@@ -262,7 +262,7 @@ function formatDate(isoDate: string, timeZone: string = "Europe/Warsaw"): string
 <div class="pt-6 break-words w-full">
     {#if news}
       <h2 class="text-6xl text-start">
-        <a class="text-blue-500" href="/">Oferty</a> &gt; Edycja &gt; {news.name}
+        <a class="text-blue-500" href="/">Ogłoszenia</a> &gt; Edycja &gt; {news.name}
       </h2>
       <div class="flex flex-wrap flex-col justify-center relative break-words w-full ql-editor">
           <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa oferty...">
@@ -271,7 +271,7 @@ function formatDate(isoDate: string, timeZone: string = "Europe/Warsaw"): string
           <button class="inline-block w-1/12 hover:cursor-pointer" on:click={editNews}>Edytuj</button>
       </div>
     {:else}
-      <p>Ładowanie aktualności...</p>
+      <p>Ładowanie ogłoszenia...</p>
     {/if}
   </div>
   {:else}

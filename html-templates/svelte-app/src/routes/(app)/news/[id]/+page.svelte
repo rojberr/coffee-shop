@@ -43,18 +43,18 @@
 <div class="pt-6 break-words w-full">
     {#if news}
       <h2 class="text-6xl text-start">
-        <a class="text-blue-500" href="/">Oferty</a> &gt; {news.name}
+        <a class="text-blue-500" href="/">Ogłoszenia</a> &gt; {news.name}
       </h2>
       <div class="flex flex-wrap flex-col justify-center relative break-words w-full ql-editor">
         {#if news.content}
           <div class="text-xl">{news.created_at}</div>
           <div class="w-full min-h-96" bind:this={editor} />
         {:else}
-          <p>Ta aktualność nie posiada żadnego tekstu!</p>
+          <p>To ogłoszenie nie posiada żadnego tekstu!</p>
         {/if}
       </div>
     {:else}
-      <p>Ładowanie aktualności...</p>
+      <p>Ładowanie ogłoszenia...</p>
     {/if}
   </div>
 
