@@ -77,7 +77,7 @@
 		<!-- Rozwijana lista podstron -->
 		<div class="relative flex items-center pages-trigger">
 			<div
-				class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1"
+				class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1 text-white"
 				on:click={togglePages}
 			>
 				Podstrony
@@ -101,7 +101,7 @@
 			<a class="border-neutral-500 bg-neutral-800 border-2 rounded-xl flex content-center" href="/login">Zaloguj się</a>
 			<a class="bg-neutral-100 border-2 rounded-xl flex content-center text-black" href="/register">Zarejestruj się</a>
 		{:else}
-			<div class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1" on:click={toggleNavbar}>
+			<div class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1 text-white" on:click={toggleNavbar}>
 				<Icon icon="stash:user-avatar" width="40px" inline={true} class="inline-block mx-2" />
 				<Icon icon="ep:arrow-down" width="20px" inline={true} class="inline-block" />
 			</div>
@@ -135,7 +135,11 @@
 
 	nav div > a,
 	nav div button {
-		@apply p-2 mx-3 flex flex-wrap content-center;
+		@apply p-2 mx-3 flex flex-wrap content-center text-white;
+	}
+
+	.logo {
+		@apply text-white;
 	}
 
 	div > a:hover,
