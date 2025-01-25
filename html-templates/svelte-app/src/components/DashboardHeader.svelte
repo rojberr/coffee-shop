@@ -2,21 +2,21 @@
     <a href="/">
         <div class="flex">
             <div class="logo">
-                <Icon icon="material-symbols:logo-dev-rounded" width="60px" inline={true} class="inline-block mx-2" />
+                <Icon icon="material-symbols:logo-dev-rounded" width="60px" inline={true} class="inline-block mx-2 text-white" />
             </div>
         </div>
     </a>
-    <div class="flex flex-wrap justify-end ml-auto mr-10 links">
+    <div class="flex flex-wrap justify-end ml-auto mr-10 links text-white">
         <a href="/">Wróć do strony głównej</a>
     </div>
     <div class="relative flex items-center menu-trigger">
             <div class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1" on:click={toggleNavbar}>
-                <Icon icon="stash:user-avatar" width="40px" inline={true} class="inline-block mx-2" />
-                <Icon icon="ep:arrow-down" width="20px" inline={true} class="inline-block" />
+                <Icon icon="stash:user-avatar" width="40px" inline={true} class="inline-block mx-2 text-white" />
+                <Icon icon="ep:arrow-down" width="20px" inline={true} class="inline-block text-white" />
             </div>
 
             {#if isNavbarOpen}
-                <div class="fixed top-20 w-40 right-0 bg-neutral-800 shadow-lg rounded-bl-lg rounded-br-lg dropdown-container transition-all duration-100">
+                <div class="fixed top-20 w-40 right-0 bg-neutral-800 shadow-lg rounded-bl-lg rounded-br-lg dropdown-container transition-all duration-100 text-white">
                     <ul>
                         <li on:click={() => signOut({ callbackUrl: '/' })}>Wyloguj się</li>
                     </ul>

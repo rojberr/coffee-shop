@@ -33,7 +33,7 @@
 }
   </script>
   
-  <div class="container">
+  <div class="container text-white">
     <h1 class="text-4xl font-bold mb-4">Zarządzanie podstronami</h1>
   
     <button class="btn-green mb-4" on:click={() => goto("/admin/pages/edit/new")}>

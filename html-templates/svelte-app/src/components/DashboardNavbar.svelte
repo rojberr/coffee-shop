@@ -1,9 +1,9 @@
 <nav class="flex-shrink-0 top-0 z-10 overflow-hidden flex flex-col flex-wrap content-center justify-between w-56 h-full bg-neutral-900 p-4 font-normal text-sm border-neutral-600 border-r shadow-lg">
-    <div class="flex flex-wrap flex-col justify-start ml-auto mr-10 links h-full">
+    <div class="flex flex-wrap flex-col justify-start ml-auto mr-10 links h-full text-white">
         Panel administracyjny
-        <a href="/admin"><Icon icon="material-symbols-light:home-outline" width="20px" inline={true} class="inline-block mx-2" />Panel główny</a>
-        <a href="/admin/pages"><Icon icon="iconoir:multiple-pages-empty" width="20px" inline={true} class="inline-block mx-2" />Strony</a>
-        <a href="/admin/users"><Icon icon="mdi:users" width="20px" inline={true} class="inline-block mx-2" />Użytkownicy</a> 
+        <a href="/admin"><Icon icon="material-symbols-light:home-outline" width="20px" inline={true} class="inline-block mx-2 text-white" />Panel główny</a>
+        <a href="/admin/pages"><Icon icon="iconoir:multiple-pages-empty" width="20px" inline={true} class="inline-block mx-2 text-white" />Strony</a>
+        <a href="/admin/users"><Icon icon="mdi:users" width="20px" inline={true} class="inline-block mx-2 text-white" />Użytkownicy</a>
     </div>
 </nav>
 

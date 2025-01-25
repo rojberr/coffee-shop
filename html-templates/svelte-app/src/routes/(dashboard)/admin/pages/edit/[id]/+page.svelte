@@ -239,12 +239,12 @@ async function checkForMissingImages(raw_content: string) {
   </script>
   
   <div>
-    <h1>{pk_id ? "Edycja podstrony" : "Nowa podstrona"}</h1>
+    <h1 class="text-white">{pk_id ? "Edycja podstrony" : "Nowa podstrona"}</h1>
     <input class="text-black" bind:value={name} placeholder="Nazwa podstrony" />
   
-    <div bind:this={editor}></div>
+    <div bind:this={editor} class="text-white"></div>
   
-    <button on:click={savePage}>Zapisz</button>
+    <button on:click={savePage} class="text-white">Zapisz</button>
   </div>
   
   <style>

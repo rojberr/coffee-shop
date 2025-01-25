@@ -73,7 +73,7 @@
             <label for="username">
                 Nazwa użytkownika
             </label>
-            <input name="username" type="username" value={form?.username || ""} required>
+            <input name="username" type="text" value={form?.username || ""} required>
             <label for="password">
                 Hasło
             </label>

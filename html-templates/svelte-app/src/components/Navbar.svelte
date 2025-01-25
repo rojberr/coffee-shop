@@ -99,7 +99,7 @@
 	<div class="relative flex items-center menu-trigger">
 		{#if !user}
 			<a class="border-neutral-500 bg-neutral-800 border-2 rounded-xl flex content-center" href="/login">Zaloguj się</a>
-			<a class="bg-neutral-100 border-2 rounded-xl flex content-center text-black" href="/register">Zarejestruj się</a>
+			<a class="border-neutral-500 bg-neutral-800 border-2 rounded-xl flex content-center text-black" href="/register">Zarejestruj się</a>
 		{:else}
 			<div class="flex items-center hover:cursor-pointer hover:transition-all hover:duration-150 hover:bg-blue-500 hover:bg-opacity-10 rounded-lg p-1 text-white" on:click={toggleNavbar}>
 				<Icon icon="stash:user-avatar" width="40px" inline={true} class="inline-block mx-2" />

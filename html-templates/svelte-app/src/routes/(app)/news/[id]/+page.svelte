@@ -40,7 +40,7 @@
     });
 </script>
 
-<div class="pt-6 break-words w-full">
+<div class="pt-6 break-words w-full text-white">
     {#if news}
       <h2 class="text-6xl text-start">
         <a class="text-blue-500" href="/">Ogłoszenia</a> &gt; {news.name}

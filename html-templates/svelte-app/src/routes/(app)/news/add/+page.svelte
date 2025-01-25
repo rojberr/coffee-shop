@@ -217,12 +217,12 @@
   </style>
   
   <div class="editor-wrapper flex flex-col items-center">
-    <input class="inline-block w-1/4" type="text" bind:value={name} placeholder="Nazwa ogłoszenia...">
+    <input class="inline-block w-1/4 text-white" type="text" bind:value={name} placeholder="Nazwa ogłoszenia...">
     
     <div class="bg-slate-100 text-black w-11/12 ">
       <div class="w-full min-h-96" bind:this={editor} />
     </div>
-    <button class="inline-block w-1/12" on:click={addNews}>Dodaj</button>
+    <button class="inline-block w-1/6 text-white" on:click={addNews}>Dodaj</button>
     
   </div>
 

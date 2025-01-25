@@ -1,4 +1,4 @@
-Witaj w panelu administracyjnym!
+<div class="text-white">Witaj w panelu administracyjnym!</div>
 
 <script lang="ts">
 	import { goto } from "$app/navigation";
