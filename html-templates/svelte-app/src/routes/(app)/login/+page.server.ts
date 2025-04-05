@@ -8,6 +8,7 @@ export const actions: Actions = {
         const formData = await request.formData();
         const email = formData.get('email') as string | null;
         const password = formData.get('password') as string | null;
+        console.log('im in BE login');
 
         if (!email || !password) {
             return {

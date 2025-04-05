@@ -19,8 +19,11 @@
 
     async function handleLogin(event: Event) {
         event.preventDefault();
+        console.log('im in FE login handle');
 
         const result = await signIn('credentials', {
+            redirect: false, // <- this avoids redirect-based flow
+            callbackUrl: '/', // optional, but good to define
             email,
             password
         });

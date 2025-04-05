@@ -74,10 +74,6 @@ export const authOptions: SvelteKitAuthConfig = {
     secret: process.env.AUTH_SECRET,
     session: {
         strategy: "jwt"
-    },
-    pages: {
-        signIn: "/login", // Optional: Custom sign-in page
-        error: '/login', // Strona obsługująca błędy logowania
     }
 };
 

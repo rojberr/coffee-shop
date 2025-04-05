@@ -2,14 +2,8 @@ export const TABLES = {
     users: `
       CREATE TABLE IF NOT EXISTS Users (
         pk_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        surname TEXT,
         email_address TEXT,
         password TEXT,
-        birthdate TEXT,
-        sex INTEGER,
-        created_at TEXT,
-        last_active TEXT,
         is_admin INTEGER
       )
     `,

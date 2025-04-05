@@ -5,6 +5,12 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			db: Database;
+			user?: {
+				id: string;
+				email: string;
+				isAdmin: boolean;
+				tokenExpired: boolean;
+			  };
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -81,17 +81,11 @@ export const ensureDefaultPages = async (db: Database) => {
   
       // Dodaj użytkownika do bazy
       db.run(
-        `INSERT INTO Users (name, surname, email_address, password, birthdate, sex, created_at, last_active, is_admin) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO Users (email_address, password, is_admin) 
+         VALUES (?, ?, ?)`,
         [
-          'Damian',
-          'Dolata',
           email,
           hashedPassword,
-          '2000-02-21', // data urodzenia
-          1, // 1 = mężczyzna
-          formattedDate,
-          formattedDate,
           1 // Administrator
         ]
       );

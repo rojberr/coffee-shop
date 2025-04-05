@@ -1,4 +1,4 @@
-import { object, string, number, date, ref, type ValidationError } from "yup";
+import { object, string, ref } from "yup";
 
 
 export const prerender = false;
@@ -8,9 +8,9 @@ export const actions = {
         const formData = await request.formData();
         // const name = formData.get('name') as string;
         // const surname = formData.get('surname') as string;
-        const username = formData.get('username') as string;
+        const email_address = formData.get('email_address') as string;
         const password = formData.get('password') as string;
-		const passwordConfirmation = formData.get('password2') as string;
+		    const passwordConfirmation = formData.get('password2') as string;
         // const birthdate = formData.get('dateOfBirth') as string;
         // const sex = formData.get('sex') as number | null;
 
@@ -22,9 +22,9 @@ export const actions = {
         // const last_active = created_at;
         // const is_admin = 0;
 
-        let usernameExists: boolean = false;
+        let emailExists: boolean = false;
 
-        console.log(`Username: ${username}, password: ${password}`)
+        console.log(`Email: ${email_address}, password: ${password}`)
 
         try {
             const response = await fetch('/api/users/exists', {
@@ -32,12 +32,12 @@ export const actions = {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ username: username }),
+              body: JSON.stringify({ email_address: email_address }),
             });
       
             if (response.ok) {
               const result = await response.json();
-              usernameExists = result.usernameExists;
+              emailExists = result.emailExists;
             } else {
               console.error('Failed to check email existence');
             }
@@ -45,10 +45,12 @@ export const actions = {
             console.error('Error:', error);
         }
 
-        console.log(`exists: ${usernameExists}`);
+        console.log(`exists: ${emailExists}`);
 
         const registerFormSchema = object({
-            username: string().min(5, "Za krótka nazwa użytkownika.").required("Brak nazwy użytkownika."),
+            email_address: string().required("Brak adresu e-mail.").email().test('email_check', "Adres email jest już zarejestrowany.", function(value) {
+                return emailExists === false;
+            }),
             password: string()
             .required('Brak hasła.') 
             .min(8, 'Hasło jest za krótkie - powinno mieć co najmniej 8 znaków.')
@@ -59,7 +61,7 @@ export const actions = {
 
         try {
             const formValidationResult = await registerFormSchema.validate(
-                { username, password, passwordConfirmation,  },
+                { email_address, password, passwordConfirmation,  },
                 { abortEarly: false }
             );
             
@@ -68,12 +70,12 @@ export const actions = {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username: username,
+                body: JSON.stringify({ email_address: email_address,
                     password: password }),
               });
         
               if (response.ok) {
-                console.log('User successfully registered:', username);
+                console.log('User successfully registered:', email_address);
                 const result = await response.json();
                 return { success: true, status: "User successfully registered.", data: result };
               } else {
@@ -90,7 +92,7 @@ export const actions = {
 
             return {
                 errors,
-                username,
+                email_address,
                 password,
                 passwordConfirmation
             };

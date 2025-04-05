@@ -70,10 +70,10 @@
             use:enhance 
         >
         
-            <label for="username">
-                Nazwa użytkownika
+            <label for="email_address">
+                Email
             </label>
-            <input name="username" type="text" value={form?.username || ""} required>
+            <input name="email_address" type="email" value={form?.email_address || ""} required>
             <label for="password">
                 Hasło
             </label>

@@ -20,18 +20,16 @@
         <thead>
             <tr>
                 <td>Lp.</td>
-                <td>Imię</td>
-                <td>Nazwisko</td>
                 <td>Email</td>
+                <td>Rola</td>
             </tr>
         </thead>
         <tbody>
             {#each users ?? [] as user, index}
                 <tr>
                     <td>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>{user.surname}</td>
                     <td>{user.email_address}</td>
+                    <td>{#if isAdmin} Administrator{:else}Użytkownik{/if}</td>
                 </tr>
             {/each}
         </tbody>
