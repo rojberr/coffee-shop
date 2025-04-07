@@ -3,6 +3,7 @@
 	import { page } from "$app/stores";
     import Icon from '@iconify/svelte';
 	import { redirect } from "@sveltejs/kit";
+  export const prerender = false;
 
     let news = [];
     $: news = $page.data.news || [];

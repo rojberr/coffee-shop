@@ -6,7 +6,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
   try {
     console.log('LOGIN ENDPOINT');
     const { email_address, password } = await request.json();
-    console.log(email_address)
+    console.log(password)
 
     if (!email_address || !password) {
       return new Response(JSON.stringify({ success: false, message: 'Email and password are required' }), {
@@ -41,10 +41,12 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
     // Wait for the promise to resolve or reject
     const rows = await loadDataPromise;
-
+    console.log(rows);
     const isValid = await verifyPassword(password, rows[0].password);
+    console.log(isValid);
     if (rows.length > 0 && isValid)  {
       // Authentication successful
+      console.log('authneticated');
       return new Response(
         JSON.stringify({ success: true, message: 'User authenticated.', id: rows[0].pk_id, email: rows[0].email_address, isAdmin: rows[0].is_admin }),
         { status: 200 }

@@ -18,16 +18,26 @@
     });
 
     async function handleLogin(event: Event) {
-        event.preventDefault();
-        console.log('im in FE login handle');
+    event.preventDefault();
+    console.log('im in FE login handle');
+    
+    const result = await signIn('credentials', {
+        redirect: false,
+        callbackUrl: '/',
+        email,
+        password
+    });
 
-        const result = await signIn('credentials', {
-            redirect: false, // <- this avoids redirect-based flow
-            callbackUrl: '/', // optional, but good to define
-            email,
-            password
-        });
+    if (result?.error) {
+        // Handle error (e.g., show a message)
+        console.error('Login failed:', result.error);
+    } else {
+        // Successfully logged in
+        console.log('Login successful');
+        goto('/'); // Redirect to home page
     }
+}
+
     
 </script>
 
