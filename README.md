@@ -1,19 +1,19 @@
 # coffee-shop
 
-## To run
+## Włączanie aplikacji
 
-Use Java 23. From root
+W folderze html-templates/svelte-app
 ```
-JAR_FILE=backend-0.0.1-SNAPSHOT.jar
-./backend/gradlew -p backend build && java -jar backend/build/libs/${JAR_FILE}
-docker-compose up --build
-```
-
-Now you can go to:
-```
-localhost:80 -> for frontend
-localhost:8080 -> for backend
-localhost:7432 -> psql db entrypoint
+npm i
+npm run dev
 ```
 
-Link to [article](https://onedrive.live.com/edit?id=7FCCCBF3665A9E5A!436&resid=7FCCCBF3665A9E5A!436&ithint=file%2cdocx&authkey=!AK2jr9tAVps_J3w&wdo=2&cid=7fcccbf3665a9e5a)
+Pełna inicjalizacja bazy przy pierwszym włączaniu może wymagać ponownego uruchomienia.
+
+W svelte-app należy dodać plik .env:
+```
+AUTH_SECRET=38395907aa41f56120c43cee09d8de5a6ce8197691fbfb0fe02f3b904c606d43
+VITE_PUBLIC_API_URL=http://localhost:5173
+ADMIN_EMAIL=user@gmail.com
+ADMIN_PASSWORD=user123123
+```
